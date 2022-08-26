@@ -342,6 +342,23 @@
             </p>
           </div>
         </div>
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label>{{ T.contestNewFormPlagiarismRequired }}</label>
+            <div class="checkbox form-check">
+              <input
+                v-model="checkPlagiarism"
+                data-check-plagiarism
+                class="form-check-input"
+                type="checkbox"
+              />
+              <label class="form-check-label"> {{ T.wordsEnable }}</label>
+            </div>
+            <p class="help-block">
+              {{ T.contestNewFormPlagiarismRequiredDesc }}
+            </p>
+          </div>
+        </div>
         <div class="form-group">
           <button class="btn btn-primary" type="submit">
             {{
@@ -423,6 +440,7 @@ export default class NewForm extends Vue {
   currentContestForTeams = this.contestForTeams;
   currentTeamsGroupAlias = this.teamsGroupAlias;
   titlePlaceHolder = '';
+  checkPlagiarism = false;
 
   @Watch('windowLengthEnabled')
   onPropertyChange(newValue: boolean): void {
@@ -528,6 +546,7 @@ export default class NewForm extends Vue {
       needs_basic_information: this.needsBasicInformation,
       requests_user_information: this.requestsUserInformation,
       contest_for_teams: this.currentContestForTeams,
+      check_plagiarism: this.checkPlagiarism,
     };
     if (this.windowLengthEnabled && this.windowLength) {
       contest.window_length = this.windowLength;
